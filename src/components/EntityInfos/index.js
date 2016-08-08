@@ -114,12 +114,13 @@ function refineActions (props$, actions) {
 
   return {
     changeMeta$: actions.changeMeta$,
+    changeBounds$: actions.changeBounds$,
     changeTransforms$
   }
 }
 
 function EntityInfos ({DOM, props$}, name = '') {
-  const {changeMeta$, changeTransforms$} = refineActions(props$, intent(DOM))
+  const {changeMeta$, changeBounds$, changeTransforms$} = refineActions(props$, intent(DOM))
   const state$ = model(props$)
   const vtree$ = view(state$)
 
@@ -127,6 +128,7 @@ function EntityInfos ({DOM, props$}, name = '') {
     DOM: vtree$,
     events: {
       changeMeta$,
+      changeBounds$,
       changeTransforms$
     }
   }
